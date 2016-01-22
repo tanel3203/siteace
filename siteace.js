@@ -46,13 +46,22 @@ if (Meteor.isClient) {
 			$("#website_form").toggle('slow');
 		}, 
 		"submit .js-save-website-form":function(event){
-
+			var url, title, description;
 			// here is an example of how to get the url out of the form:
-			var url = event.target.url.value;
-			console.log("The url they entered is: "+url);
-			
+			url = event.target.url.value;
+			title = event.target.title.value;
+			description = event.target.description.value;
+			console.log("url: " + url + ", title: " + title + ", description: " + description);
 			//  put your website saving code in here!	
-
+			if (Meteor.user()) {
+				Websites.insert({
+					url: url,
+					title: title,
+					description: description,
+					createdOn: new Date() //,
+					//createdBy:Meteor.user()._id
+				});
+			}
 			return false;// stop the form submit from reloading the page
 
 		}

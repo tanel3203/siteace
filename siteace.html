@@ -22,9 +22,12 @@
 	<div class="container">
 		<a href="{{url}}">{{title}}</a>
 		<p>
-			{{description}} <br> Added: {{createdOn}}
+			{{description}} <br> Added: {{createdOn}} <br> <a href="/">back</a>
 		</p>
 		
+		<div class="comment-section">
+			{{> commentsBox id=_id}}
+		</div>
 	
 	</div>
 </template>
